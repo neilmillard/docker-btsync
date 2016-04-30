@@ -4,6 +4,7 @@
 
 FROM alpine:latest
 MAINTAINER Neil Millard <neil@neilmillard.com>
+ENV GLIBC_VERSION 2.23-r1
 RUN apk add --update curl ca-certificates bash && \
     curl -o /tmp/glibc.apk -L "https://github.com/andyshinn/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/glibc-${GLIBC_VERSION}.apk" && \
     apk add --allow-untrusted /tmp/glibc.apk && \
