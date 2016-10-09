@@ -12,15 +12,13 @@ RUN apk add --update curl ca-certificates bash && \
     apk add --allow-untrusted /tmp/glibc-bin.apk && \
     /usr/glibc-compat/sbin/ldconfig /lib /usr/glibc/usr/lib && \
     rm -rf /tmp/* /var/cache/apk/* &&  \
-    echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf
-RUN curl -o /usr/bin/btsync.tar.gz http://download-lb.utorrent.com/endpoint/btsync/os/linux-x64/track/stable
-RUN cd /usr/bin && tar -xzvf btsync.tar.gz && rm btsync.tar.gz
-RUN mkdir -p /btsync/.sync
-RUN mkdir -p /var/run/btsync
-RUN mkdir -p /data
-EXPOSE 8888/tcp
+    echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf && \
+    curl -o /usr/bin/btsync.tar.gz && \
+    https://download-cdn.getsync.com/${BTSYNC_VERSION}/linux-x64/BitTorrent-Sync_x64.tar.gz && \
+    cd /usr/bin && tar -xzvf btsync.tar.gz && rm btsync.tar.gz && \
+    mkdir -p /btsync/.sync && mkdir -p /var/run/btsync && mkdir -p /mnt/sync
 EXPOSE 55555/tcp
 ADD start-btsync /usr/bin/start-btsync
 RUN chmod +x /usr/bin/start-btsync
-VOLUME /data
+VOLUME /mnt/sync
 ENTRYPOINT start-btsync
