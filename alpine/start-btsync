@@ -30,6 +30,6 @@ echo "{
             \"use_sync_trash\": false
         }
     ]
-}" > /btsync/btsync.conf
+}" > /etc/btsync.conf
 
-btsync --config /btsync/btsync.conf --nodaemon
+btsync --config /etc/btsync.conf --nodaemon
