@@ -13,7 +13,7 @@ RUN apk add --update curl ca-certificates bash && \
     /usr/glibc-compat/sbin/ldconfig /lib /usr/glibc/usr/lib && \
     rm -rf /tmp/* /var/cache/apk/* &&  \
     echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf && \
-    curl -o /usr/bin/btsync.tar.gz && \
+    curl -o /usr/bin/btsync.tar.gz \
     https://download-cdn.getsync.com/${BTSYNC_VERSION}/linux-x64/BitTorrent-Sync_x64.tar.gz && \
     cd /usr/bin && tar -xzvf btsync.tar.gz && rm btsync.tar.gz && \
     mkdir -p /btsync/.sync && mkdir -p /var/run/btsync && mkdir -p /mnt/sync
