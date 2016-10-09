@@ -1,6 +1,11 @@
 #!/bin/bash
 SECRET="${@}"
 : ${SECRET:=`btsync --generate-secret`}
+if [ -z "$SYNC_DIR" ]; then
+    echo >&2 'error: missing required SYNC_DIR environment variable'
+    echo >&2 '  Did you forget to -e SYNC_DIR=... ?'
+    exit 1
+fi
 echo "Starting btsync with secret: $SECRET"
 echo "Syncing folder: $SYNC_DIR"
 
