@@ -16,7 +16,7 @@ RUN apk add --update curl ca-certificates bash && \
     curl -o /usr/bin/btsync.tar.gz \
     https://download-cdn.getsync.com/${BTSYNC_VERSION}/linux-x64/BitTorrent-Sync_x64.tar.gz && \
     cd /usr/bin && tar -xzvf btsync.tar.gz && rm btsync.tar.gz && \
-    mkdir -p /btsync/.sync && mkdir -p /var/run/btsync && mkdir -p /mnt/sync
+    mkdir -p /btsync/.sync && mkdir -p /var/run/btsync && mkdir -p /mnt/sync/config
 EXPOSE 55555/tcp
 ADD start-btsync /usr/bin/start-btsync
 RUN chmod +x /usr/bin/start-btsync
