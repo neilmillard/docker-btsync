@@ -8,6 +8,7 @@ if [ -z "$SYNC_DIR" ]; then
 fi
 echo "Starting btsync with secret: $SECRET"
 echo "Syncing folder: $SYNC_DIR"
+mkdir -p $SYNC_DIR
 
 echo "{
     \"device_name\": \"Sync Server\",
