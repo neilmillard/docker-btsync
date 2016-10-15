@@ -11,7 +11,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "shell",
     inline: "sudo yum -y install docker && sudo systemctl start docker"
   config.vm.network "forwarded_port", guest: 80, host: 4567
-  
+  #config.vm.network "forwarded_port", guest: 55555, host: 55555
+
   # requires a vagrant plugin vagrant-gatling-rsync
   # to install :-
   # $vagrant plugin install vagrant-gatling-rsync
